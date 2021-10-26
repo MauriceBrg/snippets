@@ -1,0 +1,34 @@
+// #sidebar I am the text in the sidebar.
+
+h1 {{ title }}
+
+.ui.piled.segment
+  p Oh hi there ! I am some text in a cool box.
+
+.ui.grid 
+    .six.wide.column
+        strong Left Column
+        p
+            | This is a static image from 
+            a(href="https://unsplash.com/@wesnext") Lucas Wesney on Unsplash
+        img(src="#{workdir}/lucas-wesney-s-y2HJElONo-unsplash.jpg", class="ui image")
+    .six.wide.column
+        strong Right Column
+        p This is a figure from Plotly:
+        img(src="data:image/png;base64,#{fig_as_b64}", alt="Non-Existent", class="ui image")
+
+.ui.grid
+    .column
+        table(class='ui striped table')
+            thead
+                tr
+                    th Timestamp
+                    th Event Code
+                    th Sub Event Code
+                    th Event Text
+                    th Room ID
+            tbody
+                each row in table_rows
+                    tr
+                        each field in row
+                            td #{field}
