@@ -2,7 +2,9 @@ version: "3.7"
 
 services:
   vmq0:
-    image: vernemq/vernemq
+    # This should work with a variety of versions, on my ARM based Mac I had problems
+    # with some tags of vernemq, but those were non-existent on linux
+    image: vernemq/vernemq:1.12.3-alpine
     environment:
       DOCKER_VERNEMQ_SWARM: 1
       DOCKER_VERNEMQ_ACCEPT_EULA: "yes"

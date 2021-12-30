@@ -182,3 +182,5 @@ terraform.rc
 
 local/ssl/*
 !local/ssl/.keep
+
+.terraform.lock.hcl
