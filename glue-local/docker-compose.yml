@@ -1,0 +1,24 @@
+version: '3.8'
+
+
+services:
+  jupyter:
+    # Tags: https://hub.docker.com/r/amazon/aws-glue-libs/tags
+    # - glue_libs_3.0.0_image_01
+    # - glue_libs_2.0.0_image_01
+    # - glue_libs_1.0.0_image_01
+    image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+    ports:
+      - 4040:4040 # Spark UI
+      - 8888:8888 # Jupyter Notebook Server
+    command: /home/glue_user/jupyter/jupyter_start.sh
+    env_file:
+      - ./config.env
+    environment:
+      - AWS_PROFILE=default # Change this to the profile you want to use.
+      - DISABLE_SSL=1
+    volumes:
+      # Maps the local AWS Config into the container as read only
+      - ~/.aws:/root/.aws:ro
+      # Maps the workdir folder into the container
+      - ./workspace:/home/glue_user/workspace/jupyter_workspace
